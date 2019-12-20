@@ -1423,9 +1423,9 @@ object Parsers {
         case FORSOME => syntaxError(ExistentialTypesNoLongerSupported()); t
         case _ =>
           if (imods.isOneOf(GivenOrImplicit) && !t.isInstanceOf[FunctionWithMods])
-            syntaxError("Types with implicit keyword can only be function types `implicit (...) => ...`", implicitKwPos(start))
+            syntaxError(ImplicitTypesCanOnlyBeFunctionTypes())
           if (imods.is(Erased) && !t.isInstanceOf[FunctionWithMods])
-            syntaxError("Types with erased keyword can only be function types `erased (...) => ...`", implicitKwPos(start))
+            syntaxError(ErasedTypesCanOnlyBeFunctionTypes())
           t
       }
     }
